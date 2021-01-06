@@ -1,0 +1,20 @@
+.formWidth{
+  width: 448px;
+}
+
+.table th, .table td{
+    vertical-align: middle;
+}
+
+.inline{
+  display: inline;
+}
+
+.inFlex{
+  display: inline-flex;
+}
+
+.iEnd{
+  align-self: end;
+  padding: 0 5px;
+}

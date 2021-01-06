@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <meta content = "width=device-width, initial-scale=1.0"
+        name = "viewport">
+  <meta content = "ie=edge" http-equiv = "X-UA-Compatible">
+  <title>Info films of OMDB</title>
+  <link crossorigin = "anonymous" href = "https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity = "sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" rel = "stylesheet">
+  <link href = "style.css" rel = "stylesheet">
+
+<body>
+
+<div class = "container-fluid px-5" id = "cont">
+  <div class = "formWidth mx-auto mt-5 border rounded-sm p-2">
+    <h3 class = "text-center">Search:</h3>
+    <form name = "search" class = "needs-validation was-validated" novalidate = "">
+      <div class = "form-group row">
+        <label class = "col-sm-2 col-form-label" for = "inputTitle">Title:</label>
+        <div class = "col-sm-10">
+          <input class = "form-control" id = "inputTitle" name = "s" type = "text" required = "">
+          <div class = "invalid-tooltip">
+            Please provide a valid name.
+          </div>
+        </div>
+      </div>
+      <div class = "form-group row">
+        <label class = "col-sm-2 col-form-label" for = "type">Type:</label>
+        <div class = "col-sm-10">
+          <select class = "form-control" id = "type" name = "type">
+            <option selected value = "movie">Movie</option>
+            <option value = "series">Series</option>
+            <option value = "episode">Episode</option>
+          </select>
+        </div>
+      </div>
+
+      <div class = "form-group row">
+        <div class = "col-12">
+          <button class = "btn btn-primary btn-block" id = "search" type = "submit">Search</button>
+          <!-- === SEARCH ===-->
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class = "container-fluid my-5 px-5">
+  <h3 class = "text-center"></h3><div class = "row row-cols-1 row-cols-md-3 row-cols-lg-4" id = "films">
+</div>
+  <!--    =================  PAGINATION ====================-->
+  <nav aria-label = "Search results pages">
+    <ul class = "pagination justify-content-center" id = "pagination">
+    </ul>
+  </nav>
+  <!--    ========================== END PAGINATION ===============-->
+</div>
+
+<div class = "container-fluid px-5">
+  <h3 class = "text-center"></h3><div class = "card my-3" id = "filmInfo">
+</div>
+</div>
+
+<script crossorigin = "anonymous"
+        integrity = "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        src = "https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script crossorigin = "anonymous"
+        integrity = "sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        src = "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script crossorigin = "anonymous"
+        integrity = "sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+        src = "https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+<script src = "getInfoFilms.js"></script>
+</body>
+</html>
