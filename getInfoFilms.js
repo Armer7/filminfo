@@ -1,10 +1,12 @@
 "use strict";
 
 
-let url = 'http://www.omdbapi.com/?apikey=d7c86344';
+let url = 'https://www.omdbapi.com/?apikey=d7c86344';
 let searchUrl = '';
 let pagination = null;
-
+const films = document.getElementById('films');
+const pag = document.getElementById('pagination');
+const filmInfo = document.getElementById('filmInfo');
 
 // GET SERVER DATA
 function requestDataGet(url, method, body = null) {
@@ -30,7 +32,7 @@ function requestDataGet(url, method, body = null) {
       throw er;
     })
   }).catch(data => {
-    console.log('errorData');
+    console.log(data);
   });
 }
 
@@ -40,7 +42,6 @@ document.addEventListener('submit', function (e) {
   pagination = null;
   let searchForm = document.forms[0].elements;
   if (searchForm.s.value) {
-    //console.log(searchForm);
     searchUrl = `${url}&s=${searchForm.s.value}&type=${searchForm.type.value}`;
     filmsList(searchUrl);
   } else return false
@@ -50,17 +51,16 @@ document.addEventListener('submit', function (e) {
 function filmsList(search, page = 1) {
 
   requestDataGet(`${search}&page=${page}`, 'GET').then(data => {
-    const films = document.getElementById('films');
+
     films.previousSibling.innerHTML = 'Films:';
     films.innerHTML = '';
-    //console.log(data);
-    let pag = document.getElementById('pagination');
+
     if (data.Response === 'True') {
+      pag.style.display = '';
       let countPage = Math.ceil(+ data.totalResults / 10);
       data.Search.forEach(filmsObj => {
         filmsRender(filmsObj);
       });
-      pag.display = 'flex';
       if (pagination === null) {
         pagination = new Pagination(pag, {
           pages: countPage, // pages count
@@ -70,7 +70,7 @@ function filmsList(search, page = 1) {
       }
     } else {
       films.innerHTML = `<h4 class="text-center m-auto">${data.Error}</h4>`;
-      pag.display = 'none';
+      pag.style.display = 'none'
     }
   }).then().catch(data => {
     console.error(data);
@@ -79,7 +79,6 @@ function filmsList(search, page = 1) {
 
 // RENDER FILM LIST
 function filmsRender(filmsObj) {
-  let films = document.getElementById('films');
   let div = document.createElement('div');
   div.className = 'col mb-4';
   div.innerHTML = `
@@ -105,7 +104,7 @@ function filmsRender(filmsObj) {
 // GET FILM INFO
 function getFilmInfo(e) {
   e.preventDefault();
-  let infoUrl = `http://www.omdbapi.com/?apikey=d7c86344&i=${e.target.id}`;
+  let infoUrl = `https://www.omdbapi.com/?apikey=d7c86344&i=${e.target.id}`;
   requestDataGet(infoUrl, 'GET').then(data => {
     if (data.Response === 'True') {
       infoRender(data);
@@ -117,7 +116,7 @@ function getFilmInfo(e) {
 
 //RENDER TABLE FILM INFO
 function infoRender(info) {
-  let filmInfo = document.getElementById('filmInfo');
+
   filmInfo.previousSibling.innerHTML = 'Film info:';
   filmInfo.innerHTML = `
   <div class = "row no-gutters">
@@ -246,7 +245,7 @@ class Pagination {
   // Events method
   //pages: method for event
   Click(value) {
-    console.log(value);
+
     this.page = + value.target.innerHTML;
     let p = this.page;
     this.Start();
