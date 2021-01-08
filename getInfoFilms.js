@@ -1,7 +1,7 @@
 "use strict";
 
 
-let url = 'http://www.omdbapi.com/?apikey=d7c86344';
+let url = 'https://www.omdbapi.com/?apikey=d7c86344';
 let searchUrl = '';
 let pagination = null;
 
@@ -105,7 +105,7 @@ function filmsRender(filmsObj) {
 // GET FILM INFO
 function getFilmInfo(e) {
   e.preventDefault();
-  let infoUrl = `http://www.omdbapi.com/?apikey=d7c86344&i=${e.target.id}`;
+  let infoUrl = `https://www.omdbapi.com/?apikey=d7c86344&i=${e.target.id}`;
   requestDataGet(infoUrl, 'GET').then(data => {
     if (data.Response === 'True') {
       infoRender(data);
