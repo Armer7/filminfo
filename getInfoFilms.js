@@ -42,7 +42,8 @@ document.addEventListener('submit', function (e) {
   pagination = null;
   let searchForm = document.forms[0].elements;
   if (searchForm.s.value) {
-    filmInfo.innerHTML="";
+    filmInfo.previousSibling.innerHTML = '';
+    filmInfo.innerHTML='';
     searchUrl = `${url}&s=${searchForm.s.value}&type=${searchForm.type.value}`;
     filmsList(searchUrl);
   } else return false
