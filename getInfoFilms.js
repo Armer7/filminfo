@@ -129,12 +129,24 @@ function infoRender(info) {
             <table class = "table table-borderless h-100">
               <tbody>
               <tr>
+                <th scope = "row">imdbRating:</th>
+                <td>${info.imdbRating}</td>
+              </tr>
+              <tr>
                 <th scope = "row">Title:</th>
                 <td>${info.Title}</td>
               </tr>
               <tr>
+                <th scope = "row">Rated:</th>
+                <td>${info.Rated}</td>
+              </tr>
+              <tr>
                 <th scope = "row">Released:</th>
                 <td>${info.Released}</td>
+              </tr>
+              <tr>
+                <th scope = "row">Runtime:</th>
+                <td>${info.Runtime}</td>
               </tr>
               <tr>
                 <th scope = "row">Genre:</th>
@@ -159,6 +171,10 @@ function infoRender(info) {
               <tr>
                 <th scope = "row">Awards:</th>
                 <td>${info.Awards}</td>
+              </tr>
+              <tr>
+                <th scope = "row">Plot:</th>
+                <td>${info.Plot}</td>
               </tr>
               </tbody>
             </table>
